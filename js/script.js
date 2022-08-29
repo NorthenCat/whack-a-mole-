@@ -2,6 +2,7 @@ const holes = document.querySelectorAll('.tanah');
 const moles = document.querySelectorAll('.tikus');
 const scoreBoard = document.querySelector('.score')
 
+let audio = new Audio("audio/oof.mp3")
 let lastHole;
 let timeUp;
 let score;
@@ -42,9 +43,9 @@ function startGame() {
 
 function bonk(e){
   if(!e.isTrusted) return; //cheater !
+  audio.play();
   score++;
   this.classList.remove('up');
   scoreBoard.textContent = score;
 }
-
 moles.forEach(mole => mole.addEventListener('click', bonk))
